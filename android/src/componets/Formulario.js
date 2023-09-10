@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
 import DatePicker from 'react-native-date-picker'
-import {  Modal, SafeAreaView, ScrollView, StyleSheet, View,Text, TextInput } from 'react-native'
+import {  Modal, SafeAreaView, ScrollView, StyleSheet, View,Text, TextInput,Pressable } from 'react-native'
 const Formulario = ({modalVisible,setModalVisible}) => {
 
-const [paciente, setPaciente] = useState('')
+const [Nombre, setNombre] = useState('')
+const [Email, setEmail] = useState('')
+const [Telefono, setTelefono] = useState('')
+const [Sintomas, setSintomas] = useState('')
 const [fecha,setFecha] = useState(new Date())
+
   return (
     <Modal
       animationType='slide' //fade
@@ -13,31 +17,50 @@ const [fecha,setFecha] = useState(new Date())
     <SafeAreaView>
       <ScrollView style={style.contenido}>
         <View>
-          <Text> Asignacion de citas </Text>
+          <Text> Asignacion de horas</Text>
         </View>
+        
         <View>
-          <Text>Nombre del Paciente</Text>
+          <Text style={style.label} >Nombre</Text>
           <TextInput
             style={style.input}
-            placeholder='Nombre del paciente'
+            placeholder='Nombre'
             placeholderTextColor={'#EEE'}
-            value={paciente}
-            onChangeText={setPaciente}
+            value={Nombre}
+            onChangeText={setNombre}
 
           ></TextInput>
         </View>
         <View>
-          <Text>Nombre Propietario</Text>
-          <TextInput></TextInput>
+          <Text style={style.label}>Email</Text>
+          <TextInput
+            style={style.input}
+            placeholder='Nombre del Propiedades'
+            placeholderTextColor={'#EEE'}
+            value={Email}
+            onChangeText={setEmail}
+          
+          ></TextInput>
         </View>
         <View>
-          <Text>Telefono</Text>
-          <TextInput></TextInput>
+          <Text  style={style.label}>Telefono</Text>
+          <TextInput
+          style={style.input}
+          placeholder='Nombre del Propiedades'
+          placeholderTextColor={'#EEE'}
+          keyboardType='number-pad'
+          maxLength={10}
+          value={Telefono}
+          onChangeText={setTelefono}
+
+          
+          ></TextInput>
         </View>
         <View>
           <Text>Email</Text>
           <TextInput></TextInput>
         </View>
+       
         <View>
           <Text>Fecha cita</Text>
           <DatePicker
@@ -49,12 +72,33 @@ const [fecha,setFecha] = useState(new Date())
         </View>
         <View>
           <Text>Sintomas</Text>
-          <TextInput></TextInput>
+          <TextInput
+          style={[style.input, style.inputSintomas]}
+          placeholder='sintomas'
+          placeholderTextColor={'#EEE'}
+          numberOfLines={5}
+          multiline={true}
+          value={Sintomas}
+          onChangeText={setSintomas}
+          
+          />
         </View>
-
+        <View>
+          <Pressable style={style.btnGuardar}
+            
+          >
+            <Text style={style.btnGuardar}>Guardar</Text>
+          </Pressable>
+          <Pressable
+           style={style.btnCancelar}
+           onLongPress={() => setModalVisible(!modalVisible)}
+          >
+            <Text style={style.btnTextoCancelar}>x cancelar</Text>
+          </Pressable>
+        </View>
       </ScrollView>
     </SafeAreaView>    
-    </Modal>
+  </Modal>
   );
 }
 

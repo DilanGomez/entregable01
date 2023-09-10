@@ -25,7 +25,7 @@ import {
     return (
       <SafeAreaView style={style.contains}>
         <View>
-          <Text style={style.title}>Administracion de citas {' '}
+          <Text style={style.title}>Administracion de citas{' '}
             <Text>Veterinaria</Text>
           </Text>
         </View>
@@ -35,6 +35,7 @@ import {
             onPress={() => setModalVisible(!modalVisible)}
           >
             <Text style={style.btnTextoNuevaCita}>Crear cita</Text>
+            
           </Pressable>
           <Formulario
             modalVisible = {modalVisible}
